@@ -1,0 +1,29 @@
+name: Check storage layout
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  check_storage_layout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Check storage layout
+        uses: Rubilmax/foundry-storage-check@v3.1
+        with:
+          contract: src/Test.sol:Test
