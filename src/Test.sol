@@ -5,4 +5,6 @@ import "./Types.sol";
 
 contract Test is Types {
     TokenType public abc;
+
+    bool b;
 }
